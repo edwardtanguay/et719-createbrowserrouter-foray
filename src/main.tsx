@@ -15,7 +15,7 @@ import { PageAbout } from "./pages/PageAbout.tsx";
 import { Page404 } from "./pages/Page404.tsx";
 import { PageTodos } from "./pages/PageTodos.tsx";
 import { lazy, Suspense } from "react";
-import { loader as nounLoader } from './pages/PageNouns.tsx';
+import { loader as nounLoader } from './loader.ts';
 
 const PageNouns = lazy(() => import("./pages/PageNouns.tsx"));
 
