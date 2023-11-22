@@ -18,20 +18,28 @@ export const PageEmployees2 = () => {
 
 	return (
 		<>
-		<p className="sysmessage">This page has a mock wait time so emulate a slow-loading page.</p>
-			<h2 className="mb-3 text-2xl">
-				There are {employees.length} employees loaded with React Router
-				loader.
-			</h2>
-			<ul className="list-disc ml-5">
-				{employees.map((employee) => {
-					return (
-						<li key={employee.employeeID}>
-							{employee.firstName} {employee.lastName}
-						</li>
-					);
-				})}
-			</ul>
+			<p className="sysmessage">
+				This page has a mock wait time so emulate a slow-loading page.
+			</p>
+			{employees.length === 0 ? (
+				<p>loading...</p>
+			) : (
+				<>
+					<h2 className="mb-3 text-2xl">
+						There are {employees.length} employees loaded with React
+						Router loader.
+					</h2>
+					<ul className="list-disc ml-5">
+						{employees.map((employee) => {
+							return (
+								<li key={employee.employeeID}>
+									{employee.firstName} {employee.lastName}
+								</li>
+							);
+						})}
+					</ul>
+				</>
+			)}
 		</>
 	);
 };
