@@ -14,8 +14,8 @@ import {
 import { PageAbout } from "./pages/PageAbout.tsx";
 import { Page404 } from "./pages/Page404.tsx";
 import { PageTodos } from "./pages/PageTodos.tsx";
-import axios from "axios";
 import { lazy, Suspense } from "react";
+import { loader as nounLoader } from './pages/PageNouns.tsx';
 
 const PageNouns = lazy(() => import("./pages/PageNouns.tsx"));
 
@@ -41,18 +41,7 @@ const router = createBrowserRouter([
 						<PageNouns />
 					</Suspense>
 				),
-				loader: async () => {
-					return new Promise((resolve) => {
-						setTimeout(async () => {
-							const nouns = (
-								await axios.get(
-									"https://edwardtanguay.vercel.app/share/germanNouns.json"
-								)
-							).data;
-							resolve(nouns);
-						}, 1000);
-					});
-				},
+				loader: nounLoader
 			},
 			{
 				path: "/employees",
