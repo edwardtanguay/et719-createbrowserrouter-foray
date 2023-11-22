@@ -14,6 +14,7 @@ import { PageAbout } from "./pages/PageAbout.tsx";
 import { Page404 } from "./pages/Page404.tsx";
 import { PageTodos } from "./pages/PageTodos.tsx";
 import { PageNouns } from "./pages/PageNouns.tsx";
+import axios from "axios";
 
 const router = createBrowserRouter([
 	{
@@ -23,21 +24,28 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/employees",
-				element: <PageEmployees/>,
+				element: <PageEmployees />,
 				loader: pageEmployeesLoader,
 			},
 			{
 				path: "/todos",
-				element: <PageTodos/>,
+				element: <PageTodos />,
 				loader: async () => {
 					return new Promise((resolve) => {
-						resolve(['one', 'two', 'three', 'four']);
-					})
-				}
+						resolve(["one", "two", "three", "four"]);
+					});
+				},
 			},
 			{
-				path: "nouns",
+				path: "/nouns",
 				element: <PageNouns />,
+				loader: async () => {
+					return (
+						await axios.get(
+							"https://edwardtanguay.vercel.app/share/germanNouns.json"
+						)
+					).data;
+				},
 			},
 			{
 				path: "about",
@@ -45,7 +53,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/",
-				element: <Navigate to="/react-router" replace />,
+				element: <Navigate to="/todos" />,
 			},
 		],
 	},
