@@ -15,8 +15,7 @@ export const PageEmployees = () => {
 		<>
 		<p className="sysmessage">Loads from an external API but is quick so looks instant, but data is loaded every page load.</p>
 			<h2 className="mb-3 text-2xl">
-				There are {employees.length} employees loaded with React Router
-				loader.
+				There are {employees.length} employees:
 			</h2>
 			<ul className="list-disc ml-5">
 				{employees.map((employee) => {
