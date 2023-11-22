@@ -11,3 +11,12 @@
 a.active {
 	color: rgb(232, 232, 141);
 }
+
+.sysmessage {
+	color: yellow;
+	font-family: monospace;
+	margin-bottom: 1rem;
+	background-color: #333;
+	width: fit-content;
+	padding: .5rem;
+}
