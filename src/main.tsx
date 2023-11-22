@@ -19,7 +19,7 @@ import axios from "axios";
 import { lazy, Suspense } from "react";
 
 const PageNouns = lazy(() => import("./pages/PageNouns.tsx"));
-const suspenseElement:JSX.Element = <>...</>
+const suspenseElement: JSX.Element = <>...</>;
 
 const router = createBrowserRouter([
 	{
@@ -32,19 +32,28 @@ const router = createBrowserRouter([
 				element: <PageTodos />,
 				loader: async () => {
 					return new Promise((resolve) => {
-						resolve(["one", "two", "three", "four", 'nnn', 'jjj']);
+						resolve(["one", "two", "three", "four", "nnn", "jjj"]);
 					});
 				},
 			},
 			{
 				path: "/nouns",
-				element: <Suspense fallback={suspenseElement}><PageNouns /></Suspense>,
+				element: (
+					<Suspense fallback={suspenseElement}>
+						<PageNouns />
+					</Suspense>
+				),
 				loader: async () => {
-					return (
-						await axios.get(
-							"https://edwardtanguay.vercel.app/share/germanNouns.json"
-						)
-					).data;
+					return new Promise((resolve) => {
+						(async () => {
+							const nouns = (
+								await axios.get(
+									"https://edwardtanguay.vercel.app/share/germanNouns.json"
+								)
+							).data;
+							resolve(nouns);
+						})();
+					});
 				},
 			},
 			{
