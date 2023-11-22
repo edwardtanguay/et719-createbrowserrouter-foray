@@ -7,15 +7,11 @@ import {
 } from "react-router-dom";
 import "./index.scss";
 import {
-	PageReactRouter,
-	loader as pageReactRouterLoader,
-} from "./pages/PageReactRouter.tsx";
-import { PageReactQuery } from "./pages/PageReactQuery.tsx";
+	PageEmployees,
+	loader as pageEmployeesLoader,
+} from "./pages/PageEmployees.tsx";
 import { PageAbout } from "./pages/PageAbout.tsx";
 import { Page404 } from "./pages/Page404.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
 	{
@@ -24,13 +20,9 @@ const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
-				path: "/react-router",
-				element: <PageReactRouter />,
-				loader: pageReactRouterLoader,
-			},
-			{
-				path: "react-query",
-				element: <PageReactQuery />,
+				path: "/employees",
+				element: <PageEmployees/>,
+				loader: pageEmployeesLoader,
 			},
 			{
 				path: "about",
@@ -45,7 +37,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	<QueryClientProvider client={queryClient}>
-		<RouterProvider router={router} />
-	</QueryClientProvider>
+	<RouterProvider router={router} />
 );
