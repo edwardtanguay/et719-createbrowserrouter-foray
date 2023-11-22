@@ -13,10 +13,17 @@ export const PageEmployees = () => {
 	const employees = useLoaderData() as IEmployee[];
 	return (
 		<>
-			<h2 className="mb-3 text-2xl">There are {employees.length} employees loaded with React Router loader.</h2>
+			<h2 className="mb-3 text-2xl">
+				There are {employees.length} employees loaded with React Router
+				loader.
+			</h2>
 			<ul className="list-disc ml-5">
 				{employees.map((employee) => {
-					return <li key={employee.employeeID}>{employee.firstName} {employee.lastName}</li>;
+					return (
+						<li key={employee.employeeID}>
+							{employee.firstName} {employee.lastName}
+						</li>
+					);
 				})}
 			</ul>
 		</>

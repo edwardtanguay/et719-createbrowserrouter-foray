@@ -12,6 +12,8 @@ import {
 } from "./pages/PageEmployees.tsx";
 import { PageAbout } from "./pages/PageAbout.tsx";
 import { Page404 } from "./pages/Page404.tsx";
+import { PageTodos } from "./pages/PageTodos.tsx";
+import { PageNouns } from "./pages/PageNouns.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +25,19 @@ const router = createBrowserRouter([
 				path: "/employees",
 				element: <PageEmployees/>,
 				loader: pageEmployeesLoader,
+			},
+			{
+				path: "/todos",
+				element: <PageTodos/>,
+				loader: async () => {
+					return new Promise((resolve) => {
+						resolve(['one', 'two', 'three', 'four']);
+					})
+				}
+			},
+			{
+				path: "nouns",
+				element: <PageNouns />,
 			},
 			{
 				path: "about",
