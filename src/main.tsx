@@ -23,11 +23,6 @@ const router = createBrowserRouter([
 		element: <App />,
 		children: [
 			{
-				path: "/employees",
-				element: <PageEmployees />,
-				loader: pageEmployeesLoader,
-			},
-			{
 				path: "/todos",
 				element: <PageTodos />,
 				loader: async () => {
@@ -46,6 +41,11 @@ const router = createBrowserRouter([
 						)
 					).data;
 				},
+			},
+			{
+				path: "/employees",
+				element: <PageEmployees />,
+				loader: pageEmployeesLoader,
 			},
 			{
 				path: "about",
