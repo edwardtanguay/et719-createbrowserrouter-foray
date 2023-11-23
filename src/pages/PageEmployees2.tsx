@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { IEmployee } from "../interfaces";
 import { CgSpinnerTwo } from "react-icons/cg";
+import { NavLink } from "react-router-dom";
 
 export const PageEmployees2 = () => {
 	const [employees, setEmployees] = useState<IEmployee[]>([]);
@@ -33,7 +34,8 @@ export const PageEmployees2 = () => {
 						{employees.map((employee) => {
 							return (
 								<li key={employee.employeeID}>
-									{employee.firstName} {employee.lastName}
+							<NavLink className="underline" to={`/employee/${employee.employeeID}`}>
+							{employee.firstName} {employee.lastName}</NavLink>
 								</li>
 							);
 						})}

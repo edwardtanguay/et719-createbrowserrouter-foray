@@ -17,6 +17,7 @@ import { PageTodos } from "./pages/PageTodos.tsx";
 import { lazy, Suspense } from "react";
 import { loader as nounLoader } from './loader.ts';
 import { PageEmployees2 } from "./pages/PageEmployees2.tsx";
+import { PageEmployee } from "./pages/pageEmployee.tsx";
 
 const PageNouns = lazy(() => import("./pages/PageNouns.tsx"));
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
 			{
 				path: "/employees2",
 				element: <PageEmployees2 />
+			},
+			{
+				path: "/employee/:id",
+				element: <PageEmployee />
 			},
 			{
 				path: "about",

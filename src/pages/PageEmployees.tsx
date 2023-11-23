@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import axios from "axios";
 import { IEmployee } from "../interfaces";
 
@@ -21,7 +21,8 @@ export const PageEmployees = () => {
 				{employees.map((employee) => {
 					return (
 						<li key={employee.employeeID}>
-							{employee.firstName} {employee.lastName}
+							<NavLink className="underline" to={`/employee/${employee.employeeID}`}>
+							{employee.firstName} {employee.lastName}</NavLink>
 						</li>
 					);
 				})}
